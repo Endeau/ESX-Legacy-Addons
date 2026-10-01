@@ -330,7 +330,7 @@ AddEventHandler('esx_vehicleshop:returnProvider', function(vehicleModel)
 	MySQL.single('SELECT id, price FROM cardealer_vehicles WHERE vehicle = ?', {vehicleModel},
 	function(result)
 		if not result then
-			return print(('[^3WARNING^7] Player ^5%s^7 Attempted To Sell Invalid Vehicle - ^5%s^7!'):format(source, vehicleModel))
+			return print(('[^3WARNING^7] Player ^5%s^7 Attempted To Sell Invalid Vehicle - ^5%s^7!'):format(xPlayer.src, vehicleModel))
 		end
 
 		local id = result.id
@@ -495,7 +495,7 @@ AddEventHandler('esx_vehicleshop:setJobVehicleState', function(plate, state)
 	MySQL.update('UPDATE owned_vehicles SET `stored` = ? WHERE owner = ? AND plate = ? AND job = ?', {state, xPlayer.getIdentifier(), plate, xPlayer.getJob().name},
 	function(rowsChanged)
 		if rowsChanged == 0 then
-			print(('[^3WARNING^7] Player ^5%s^7 Attempted To Exploit the Garage!'):format(source, plate))
+			print(('[^3WARNING^7] Player ^5%s^7 Attempted To Exploit the Garage!'):format(xPlayer.src, plate))
 		end
 	end)
 end)
